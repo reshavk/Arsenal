@@ -1,0 +1,10 @@
+void allFactors(int n){
+    for(int i=1; i<(int)sqrt(n)+1; i++){
+        if(n%i == 0){
+            if(n/i = i)
+                cout << i << " ";
+            else
+                cout << i << " " << (n/i) << " ";
+        }
+    }
+}

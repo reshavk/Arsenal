@@ -1,0 +1,11 @@
+long long fastPower(long long base, long long exponent){
+    long long ans = 1;
+    while(exponent > 0){
+        if(exponent & 1){
+            result = (result * base) % MOD;
+        }
+        base = (base * base) % MOD;
+        exponent /= 2;    
+    }
+    return result;
+}
