@@ -1,0 +1,14 @@
+/*Babylonian method to calculate square root*/
+float squareRoot(float n) {
+    float y = n;
+    float x = 1;
+    while(y-x > 0.0000001) {
+        y = (x + y) / 2;
+        x = n / y;
+    }
+    return y;
+}
+
+/*In this method we keep y at n and x at 1. We keep on decrementing y and simultaneously incrementing x.
+This continue until difference between y and x becomes less than 0.0000001.
+At this point of time we have two equivalent values y and x which on multiplication will result into n. */
