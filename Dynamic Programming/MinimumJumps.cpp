@@ -13,6 +13,8 @@ for(int i=0; i<n; i++) {
 	dp[i] = INF;
 }
 
+dp[0] = 0;
+
 for(int i=0; i<n; i++) {
 	for(int j=i+1; j<min(i+a[i], n); j++) {
 		dp[j] = min(dp[i]+1, dp[j]);
