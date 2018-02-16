@@ -20,7 +20,7 @@ for(int i=0; i<n; i++) {
 } 
 
 if(dp[n-1] != INF)
-	cout << dp[n-];
+	cout << dp[n-1];
 else
 	cout << -1; //destination is unreachable
 
