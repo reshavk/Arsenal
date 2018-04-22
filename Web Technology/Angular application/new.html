@@ -1,0 +1,82 @@
+<html ng-app="billpayApp">
+<head>
+  <title>BillPay</title>
+  <script src="angular.min.js"></script>
+
+  <link rel="stylesheet" href="bootstrap.min.css">
+  <script>
+   var model = {
+     customer:"Student",
+     items: [ {bill:"Internet",status:false},
+          {bill:"Mess",status:true}]
+   };
+   var billpayApp = angular.module("billpayApp",[]);
+   billpayApp.controller("billpayctrl",function($scope){
+     $scope.billpay = model;
+
+     $scope.duebills = function(){
+       var y = $scope.billpay.items;
+       var cnt=0;
+       y.forEach((item)=>{
+         if(!item.status){
+           cnt++;
+         }
+       })
+       return cnt;
+     }
+
+     $scope.redFlag=function(){
+       if($scope.duebills() <=2 )
+       		return "label-success";
+        else
+        	return "label-danger";
+     }
+
+     $scope.addBills=function(billName){
+       obj={
+         bill:billName,
+         status:false
+       };
+       $scope.billpay.items.push(obj);
+     }
+
+     $scope.removeBills=function(rmvBills){
+       $scope.billpay.items.splice($scope.billpay.items.indexOf(rmvBills),1);
+     }
+   });
+
+   </script>
+ </head>
+
+ <body ng-controller="billpayctrl">
+   <center>
+   <h1 ng-class="redFlag()" style="margin-left: 25%; margin-right: 25%; border-radius:20px;">{{billpay.customer}}'s remaining bills
+     <span ng-hide="duebills()==0">{{duebills()}}</span>
+   </h1>
+   <h3>Add new bills</h3>
+   <input type="text" ng-model="billName">
+   <span >
+    <button ng-click="addBills(billName)">ADD</button>
+   </span>
+
+   <table >
+     <thead>
+       <tr>
+         <th>BillName</th>
+         <th>Status</th>
+         <th>Status</th>
+         <th>Check</th>
+       </tr>
+     </thead>
+     <tbody ng-model="rmvBills">
+       <tr ng-repeat="item in billpay.items" ng-model="item">
+         <td>{{item.bill}}</td>
+         <td><input type="checkbox" ng-model="item.status"/></td>
+         <td>{{item.status}}</td>
+         <td><button ng-click="removeBills(item)">Remove</button></td>
+       </tr>
+     </tbody>
+   </table>
+ </center>
+ </body>
+ </html>

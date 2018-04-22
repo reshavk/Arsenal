@@ -1,0 +1,74 @@
+<html>
+    <title>Welcome to AITMall</title>
+    <form id = "signup_form">
+        <legend>Sign up for AITMall</legend>
+        First Name : <br>
+        <input type="text" name = "firstname" value = ""><br>
+        Last Name : <br>
+        <input type="text" name = "lastname" value = ""><br>
+        Gender : <br>
+        <input type="radio" name = "gender" value = "male">Male<br>
+        <input type="radio" name = "gender" value = "female">Female<br>
+        <input type="radio" name = "gender" value = "other">Other<br>
+        E-Mail : <br>
+        <input type="text" name="email" value = ""><br>
+        Password : <br>
+        <input type="text" name="password" value = ""><br><br>
+        <button type = "button" onclick="validate()">Submit</button>
+    </form>
+
+    <script type = "text/javascript">
+        function validate() {
+            var data = document.getElementById('signup_form');
+            var fname = data.elements[0].value;
+            for(var j=0; j<fname.length; j++) {
+                if(fname.charAt(j)>='A' && fname.charAt(j)<='Z' || fname.charAt(j)>='a' && fname.charAt(j)<='z') {
+                    continue;
+                }
+                else {
+                    alert('Name cannot contain charachters other than alphabet.\nGo get a new name');
+                    return;
+                }
+            }
+            var lname = data.elements[1].value;
+            for(var j=0; j<lname.length; j++) {
+                if(lname.charAt(j)>='A' && lname.charAt(j)<='Z' || lname.charAt(j)>='a' && lname.charAt(j)<='z') {
+                    continue;
+                }
+                else {
+                    alert('Name cannot contain charachters other than alphabet.Go get a new name');
+                    return;
+                }
+            }
+            var gender = data.elements[2].value;
+            var email = data.elements[5].value;
+            var password = data.elements[6].value;
+            var x = 0;
+            for(var j=0; j<email.length; j++) {
+                if(email.charAt(j) == '@')
+                    x++;
+            }
+            if(x != 1) {
+                alert('Strange kind of e-mail id you have. Go get a new mail id');
+                return;
+            }
+            var c = 0, n = 0, a = 0;
+            for(var j=0; j<password.length; j++) {
+                if(password.charAt(j)>='0' && password.charAt(j)<='9')
+                    n++;
+                if(password.charAt(j)>='A' && password.charAt(j)<='Z' || password.charAt(j)>='a' && password.charAt(j)<='z')
+                    a++;
+                if(password.charAt(j) >= "!" && password.charAt(j)<='/')
+                    c++;
+            }
+            if(c<1 || a<1 || n<1) {
+                alert('Password must contain a special charchter, a number and an alphabet.\nGo get a new password');
+                return;
+            }
+
+            alert('Signup successful');
+        }
+    
+    </script>
+
+</html>
