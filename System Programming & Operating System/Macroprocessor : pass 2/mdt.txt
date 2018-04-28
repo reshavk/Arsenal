@@ -1,0 +1,10 @@
+0
+MOVER #2,#0
+ADD #2,#1
+MOVEM #2,#0
+MEND
+3
+MOVER #2,#0
+SUB #2,#1
+MOVEM #2,#0
+MEND

@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Employee Management</title>
+	<script type="text/javascript">
+		function insertR() {
+			var x = document.getElementById('insert');
+			if(x.style.display == 'none') {
+				x.style.display = 'block';
+			}
+			else
+				x.style.display = 'none';
+		}
+		function deleteR() {
+			var x = document.getElementById('delete');
+			if(x.style.display == 'none') {
+				x.style.display = 'block';
+			}
+			else
+				x.style.display = 'none';
+		}
+		function updateR() {
+			var x = document.getElementById('update');
+			if(x.style.display == 'none') {
+				x.style.display = 'block';
+			}
+			else
+				x.style.display = 'none';
+		}
+		function viewR() {
+			var x = document.getElementById('view');
+			x.innerHTML = '<fieldset><legend>Enter employee details</legend><label>Employee ID of record to be viewed: </label><input type="text" name="eid" id="eid" placeholder="Enter employee ID">;<br><br><br><button onclick="getUserData()" align="center" >Submit</button></fieldset>'
+			if(x.style.display == 'none')
+				x.style.display = 'block';
+			else 
+				x.style.display = 'none';
+		}
+
+		function getUserData() {
+			var id = document.getElementById('eid').value;
+
+			xhttp = new XMLHttpRequest();
+			xhttp.open("GET", "view.php?id="+id, true);
+			xhttp.send();
+
+			xhttp.onreadystatechange=function() {
+				if(this.readyState==4 && this.status==200) {
+					document.getElementById('view').innerHTML = this.responseText;
+				}
+			};
+		}
+
+	</script>
+
+</head>
+<body>
+	<h1 align="center">WELCOME TO EMPLOYEE MANAGEMENT DASHBOARD</h1>
+	<fieldset>
+		<legend>Select operation</legend>
+		<div align="center" id='operations'>
+			<button onclick="insertR()" style="width:20%; height:40px">Insert employee details</button> 
+			<br><br>
+			<button onclick="deleteR()" style="width:20%; height:40px">Delete employee details</button> 
+			<br><br>
+			<button onclick="updateR()" style="width:20%; height:40px">Update employee details</button> 
+			<br><br>
+			<button onclick="viewR()" style="width:20%; height:40px">View employee details</button> 
+			<br><br>
+		</div>
+	</fieldset>
+
+	<div style="display: none" align="center" id="insert">
+		<fieldset>
+			<legend>Enter employee details</legend>
+			<form action="insert.php" method="post">
+				<label>Employee ID : </label>
+				<input type="text" name="eid" placeholder="Enter employee ID">;
+				<br><br>
+				<label>Employee Name : </label>
+				<input type="text" name="ename" placeholder="Enter employee name">;
+				<br><br>
+				<label>Employee Position : </label>
+				<input type="text" name="epos" placeholder="Enter employee position">;
+				<br><br>
+				<label>Employee Salary : </label>
+				<input type="text" name="esal" placeholder="Enter employee salary">;
+				<br><br><br>
+				<input align="center" type="submit" name="submit" value="Submit">
+			</form>
+		</fieldset>
+		</form>
+	</div>
+
+	<div style="display: none" align="center" id="delete">
+		<fieldset>
+			<legend>Enter employee details</legend>
+			<form action="delete.php" method="post">
+				<label>Employee ID of record to be deleted: </label>
+				<input type="text" name="eid" placeholder="Enter employee ID">;
+				<br><br><br>
+				<input align="center" type="submit" name="submit" value="Submit">
+			</form>
+		</fieldset>
+		</form>
+	</div>
+
+	<div style="display: none" align="center" id="update">
+		<fieldset>
+			<legend>Enter employee updated details</legend>
+			<form action="update.php" method="post">
+				<label>Employee ID to be updated : </label>
+				<input type="text" name="eid" placeholder="Enter employee ID">;
+				<br><br>
+				<label>Updated Employee Name : </label>
+				<input type="text" name="ename" placeholder="Enter employee name">;
+				<br><br>
+				<label>Updated Employee Position : </label>
+				<input type="text" name="epos" placeholder="Enter employee position">;
+				<br><br>
+				<label>Updated Employee Salary : </label>
+				<input type="text" name="esal" placeholder="Enter employee salary">;
+				<br><br><br>
+				<input align="center" type="submit" name="submit" value="Submit">
+			</form>
+		</fieldset>
+		</form>
+	</div>
+
+	<div style="display: none" align="center" id="view">
+		
+	</div>
+
+
+</body>
+</html>

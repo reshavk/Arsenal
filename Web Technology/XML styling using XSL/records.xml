@@ -1,0 +1,25 @@
+<?xml version = "1.0"?>
+<?xml-stylesheet type = "text/xsl" href="records.xsl"?>
+<catalog>
+    <book id = "101">
+        <title>Tao te Ching</title>
+        <author>Lao Tzu</author>
+        <price>110.00</price>
+        <year>2002</year>
+    </book>
+
+    <book id = "102">
+        <title>Shiva Triology</title>
+        <author>Amish Tripathi</author>
+        <price>345.00</price>
+        <year>2015</year>
+    </book>
+
+    <book id = "103">
+        <title>The Secret</title>
+        <author>Rohnda Byrne</author>
+        <price>236.00</price>
+        <year>2006</year>
+    </book>
+</catalog>
+
