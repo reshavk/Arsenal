@@ -9,8 +9,10 @@ using namespace std;
 // O(n^2) Solution
 int * topoSort(vector<int> graph[], int N) {
 
-   int indegree[N] = {};
-   bool visited[N] = {};
+   int indegree[N];
+   bool visited[N];
+   memset(indegree, 0, sizeof(indegree));
+   memset(visited, false, sizeof(visited));
    for(int i=0; i<N; i++) {
        for(int j=0; j<graph[i].size(); j++) {
            indegree[graph[i][j]]++;
