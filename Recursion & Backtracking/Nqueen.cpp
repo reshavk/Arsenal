@@ -8,7 +8,7 @@ way that these queens don't attack each other.
 using namespace std;
 
 //Backtracking Recursive solution : 
-bool board[11][11] = {};
+bool board[8][8] = {};
 vector<int> ans;
 bool sol;
 
@@ -67,5 +67,11 @@ void nqueen(int n) {
     if(!sol) {
         cout << -1;
     }
+    else {
+        for(int i=0; i<ans.size(); i++) {
+            cout << ans[i] << " ";
+        }
+    }
     cout << "\n";
 }
+
