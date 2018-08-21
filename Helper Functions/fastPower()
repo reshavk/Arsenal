@@ -9,3 +9,12 @@ long long fastPower(long long base, long long exponent){
     }
     return result;
 }
+
+long long fastPowerRec(long long base, long long exponent) {
+    if(base == 0)
+        return 1;
+    else if(base % 2 == 0)
+        return fastPowerRec((base* base)%MOD, exponent/2);
+    else
+        return (base * fastPowerRec((base*base)%MOD, (exponent-1)/2))%MOD;
+}
